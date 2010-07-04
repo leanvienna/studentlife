@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<urlrewrite default-match-type="wildcard" use-context="false" use-query-string="false">
+	<rule enabled="true">
+        <from casesensitive="false">/applicationScaffold/**</from>
+        <to last="true" type="forward">/applicationScaffold/$1</to>
+    </rule>
+    <rule enabled="true">
+        <from casesensitive="false">/ApplicationScaffold.html</from>
+        <to last="true" type="forward">/ApplicationScaffold.html</to>
+    </rule>
+    <rule enabled="true">
+        <from casesensitive="false">/gwtRequest</from>
+        <to last="true" type="forward">/gwtRequest</to>
+    </rule>
+    <rule enabled="true">
+		<from casesensitive="false">/resources/**</from>
+		<to last="true" type="forward">/resources/$1</to>
+	</rule>
+	<rule enabled="true">
+		<from casesensitive="false">/static/WEB-INF/**</from>
+		<set type="status">403</set>
+		<to last="true" type="forward">/static/WEB-INF/$1</to>
+	</rule>
+	<rule enabled="true">
+		<from casesensitive="false">/static/**</from>
+		<to last="true" type="forward">/$1</to>
+	</rule>
+	<rule enabled="true">
+		<from casesensitive="false">/</from>
+		<to last="true" type="forward">/app/index</to>		
+	</rule>
+	<rule enabled="true">
+		<from casesensitive="false">/app/**</from>
+		<to last="true" type="forward">/app/$1</to>
+	</rule>
+	<rule enabled="true">
+		<from casesensitive="false">/**</from>
+		<to last="true" type="forward">/app/$1</to>
+	</rule>
+	<outbound-rule enabled="true" encodefirst="false">
+		<from casesensitive="false">/app/**</from>
+		<to last="true" type="forward">/$1</to>
+	</outbound-rule>	
+</urlrewrite>
