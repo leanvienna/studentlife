@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the    -->
+<!-- browser's rendering engine into               -->
+<!-- "Standards Mode". Replacing this declaration  -->
+<!-- with a "Quirks Mode" doctype may lead to some -->
+<!-- differences in layout.                        -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">	
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    
+    <link type="text/css" rel="stylesheet" href="Studentlife_gwt.css">
+    
+    <title>Studentlife</title>
+
+    <script type="text/javascript" language="javascript" src="studentlife_gwt/studentlife_gwt.nocache.js"></script>
+  </head>
+
+  <body class="span-19 last showgrid">
+  <div id="content" class="span-19 last"></div>
+  <img id="logo" src="images/logo.png" alt="StudentLife Logo" />
+
+    <!-- OPTIONAL: include this if you want history support -->
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+    <!-- Facebook Resizable JavaScript Code -->
+<!-- Note: Include this div markup as a workaround for a known bug in this release on IE where you may get a "operation aborted" error -->
+<div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div> 
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> 
+<script type="text/javascript"> 
+   FB_RequireFeatures(["CanvasUtil"], 
+       function(){ 
+       FB.XdComm.Server.init('${resource(file:'xd_receiver.html')}');
+       FB.CanvasClient.startTimerToSizeToContent(); 
+   });
+</script>
+  </body>
+</html>

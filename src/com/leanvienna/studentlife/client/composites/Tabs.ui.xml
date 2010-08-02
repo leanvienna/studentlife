@@ -1,0 +1,32 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+  xmlns:g='urn:import:com.google.gwt.user.client.ui'
+  xmlns:dp="urn:import:com.google.gwt.user.datepicker.client" >
+  <g:TabLayoutPanel barUnit='PX' barHeight='30' height="700px">
+    <g:tab>
+      <g:header size='7'>
+        Calendar
+      </g:header>
+      <g:HorizontalPanel>
+        <dp:DatePicker />
+      </g:HorizontalPanel>
+    </g:tab>
+    <g:tab>
+      <g:header size='7'>
+        Courses
+      </g:header>
+      <g:HorizontalPanel>
+        <g:Label>Keep your ducks</g:Label>
+        <g:Label>in a row</g:Label>
+      </g:HorizontalPanel>
+    </g:tab>
+    <g:tab>
+      <g:header size='7'>
+        Settings
+      </g:header>
+      <g:HorizontalPanel>
+        <g:Label>Keep your ducks</g:Label>
+        <g:Label>in a row</g:Label>
+      </g:HorizontalPanel>
+    </g:tab>
+  </g:TabLayoutPanel>
+</ui:UiBinder>

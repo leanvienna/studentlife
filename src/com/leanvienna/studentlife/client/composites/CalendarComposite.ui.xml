@@ -1,0 +1,4 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'>
+  <ul ui:field='uL'>
+  </ul>
+</ui:UiBinder>
