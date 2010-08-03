@@ -1,4 +1,4 @@
-package com.leanvienna.studentlife.client;
+package com.leanvienna.studentlife.client.interfaces;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;

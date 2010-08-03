@@ -1,4 +1,4 @@
-package com.leanvienna.studentlife.client;
+package com.leanvienna.studentlife.client.interfaces;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.leanvienna.studentlife.client;
+package com.leanvienna.studentlife.client.interfaces;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.leanvienna.studentlife.domain.City;
