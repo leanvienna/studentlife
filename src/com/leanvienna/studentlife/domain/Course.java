@@ -1,5 +1,6 @@
 package com.leanvienna.studentlife.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,12 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.datanucleus.jpa.annotations.Extension;
+
 @Entity
-public class Course {
+public class Course implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+    private String id;
 
     private String name;
     

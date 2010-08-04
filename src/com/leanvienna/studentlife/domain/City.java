@@ -1,5 +1,6 @@
 package com.leanvienna.studentlife.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,18 +10,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+import org.datanucleus.jpa.annotations.Extension;
 
-public class City {
+@Entity
+public class City implements Serializable, SharedGetters{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+    private String id;
 
     private String name;
     
-    private Student creator;
+//    private Student creator;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<University> universities = new java.util.HashSet<University>();
+
+	public void addUniversity(University university) {
+		this.universities.add(university);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public Set<University> getUniversities() {
+		return universities;
+	}
+	
 }
