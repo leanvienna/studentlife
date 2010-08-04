@@ -7,13 +7,21 @@
   
   <!-- Servlets -->
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.leanvienna.studentlife.server.GreetingServiceImpl</servlet-class>
+    <servlet-name>retrieveEntitiesServlet</servlet-name>
+    <servlet-class>com.leanvienna.studentlife.server.RetrieveEntitiesServiceImpl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>storeEntitiesServlet</servlet-name>
+    <servlet-class>com.leanvienna.studentlife.server.StoreEntitiesServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/studentlife_gwt/greet</url-pattern>
+    <servlet-name>retrieveEntitiesServlet</servlet-name>
+    <url-pattern>/studentlife_gwt/retrieve</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>storeEntitiesServlet</servlet-name>
+    <url-pattern>/studentlife_gwt/store</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
