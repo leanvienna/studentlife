@@ -15,6 +15,11 @@ import org.datanucleus.jpa.annotations.Extension;
 @Entity
 public class University implements Serializable, SharedGetters{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
@@ -27,6 +32,10 @@ public class University implements Serializable, SharedGetters{
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Course> courses = new java.util.HashSet<Course>();
 
+    public void addCourse(Course course) {
+    	courses.add(course);
+    }
+    
 	public String getName() {
 		return name;
 	}

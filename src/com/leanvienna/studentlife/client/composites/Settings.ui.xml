@@ -7,5 +7,6 @@
   <sl:SettingsForm ui:field="province" buttonText="Add Province"  withList="true"/>
   <sl:SettingsForm ui:field="city" buttonText="Add City"  withList="true"/>
   <sl:SettingsForm ui:field="university" buttonText="Add University"  withList="true"/>
+  <sl:SettingsForm ui:field="course" buttonText="Add Course"  withList="true"/>
   </g:VerticalPanel>
 </ui:UiBinder>

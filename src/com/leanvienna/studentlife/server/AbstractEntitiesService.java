@@ -3,10 +3,14 @@ package com.leanvienna.studentlife.server;
 import javax.persistence.EntityManager;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.leanvienna.studentlife.client.interfaces.StoreEntitiesService;
 
 public class AbstractEntitiesService extends RemoteServiceServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected EntityManager entityManager;
 
 	public AbstractEntitiesService() {

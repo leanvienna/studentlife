@@ -15,6 +15,11 @@ import org.datanucleus.jpa.annotations.Extension;
 @Entity
 public class Course implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")

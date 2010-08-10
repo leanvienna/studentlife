@@ -47,6 +47,9 @@ public class Settings extends Composite {
 
 	@UiField
 	SettingsForm university;
+	
+	@UiField
+	SettingsForm course;
 
 	public Settings() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -209,4 +212,15 @@ public class Settings extends Composite {
 					.addListItem(sharedGetters.getName(), sharedGetters.getId());
 		}
 	}
+	
+	@UiHandler("course")
+	void handleCourseClick(ClickEvent event) {
+		// TODO:
+	}
+	
+	private void reloadCourses() {
+		// TODO:
+	}
+	
+	
 }

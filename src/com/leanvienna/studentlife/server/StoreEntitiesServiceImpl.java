@@ -13,6 +13,11 @@ import com.leanvienna.studentlife.domain.University;
 
 public class StoreEntitiesServiceImpl extends AbstractEntitiesService implements StoreEntitiesService {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void addCountry(Country country) {
 		initEntityManager();
@@ -50,8 +55,11 @@ public class StoreEntitiesServiceImpl extends AbstractEntitiesService implements
 
 	@Override
 	public void addCourse(String universityId, Course course) {
-		// TODO Auto-generated method stub
-
+		initEntityManager();
+		University uni = (University) loadParent("University", universityId);
+		uni.addCourse(course);
+		persist(uni);
+		closeEntityManager();
 	}
 
 	@Override
