@@ -25,6 +25,7 @@ public class RetrieveEntitiesServiceImpl extends AbstractEntitiesService impleme
 
 	@Override
 	public List<City> getCities(String province) {
+		// Why initEntityManager?
 		initEntityManager();
 		Query query = entityManager.createQuery("Select p.cities from Province p where p.id = :id");
 		query.setParameter("id", province);
@@ -49,7 +50,8 @@ public class RetrieveEntitiesServiceImpl extends AbstractEntitiesService impleme
 	public List<Course> getCourses(String university) {
 		System.out.println("Loading Courses");
 		EntityManager entityManager = EMF.createEntityManager();
-		Query query = entityManager.createQuery("Select c from Course c");
+		Query query = entityManager.createQuery("SELECT u FROM University u WHERE u.id = :id");
+		query.setParameter("id", university);
 		@SuppressWarnings("unchecked")
 		List<Course> resultList = new ArrayList<Course>(query.getResultList());
 		return resultList;

@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import org.datanucleus.jpa.annotations.Extension;
 
 @Entity
-public class Course implements Serializable{
+public class Course implements Serializable, SharedGetters {
 	
 	/**
 	 * 
@@ -41,4 +41,18 @@ public class Course implements Serializable{
     
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Message> messages = new java.util.HashSet<Message>();
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
 }

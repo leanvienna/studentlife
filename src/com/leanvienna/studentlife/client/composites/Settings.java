@@ -19,6 +19,7 @@ import com.leanvienna.studentlife.client.interfaces.StoreEntitiesService;
 import com.leanvienna.studentlife.client.interfaces.StoreEntitiesServiceAsync;
 import com.leanvienna.studentlife.domain.City;
 import com.leanvienna.studentlife.domain.Country;
+import com.leanvienna.studentlife.domain.Course;
 import com.leanvienna.studentlife.domain.Province;
 import com.leanvienna.studentlife.domain.SharedGetters;
 import com.leanvienna.studentlife.domain.University;
@@ -61,6 +62,7 @@ public class Settings extends Composite {
 		reloadProvinces();
 		city.clearList();
 		university.clearList();
+		course.clearList();
 	}
 
 	@UiHandler("country")
@@ -99,6 +101,7 @@ public class Settings extends Composite {
 	void handleProvinceValueChange(ChangeEvent event){
 		reloadCities();
 		university.clearList();
+		course.clearList();
 	}
 
 	@UiHandler("province")
@@ -137,6 +140,7 @@ public class Settings extends Composite {
 	@UiHandler("city")
 	void handleCityValueChange(ChangeEvent event){
 		reloadUniversities();
+		course.clearList();
 	}
 	
 	@UiHandler("city")
@@ -173,6 +177,11 @@ public class Settings extends Composite {
 	}
 
 	@UiHandler("university")
+	void handleUniversityValueChanged(ChangeEvent event) {
+		reloadCourses();
+	}
+	
+	@UiHandler("university")
 	void handleUniversityClick(ClickEvent event) {
 		University universityInstance = new University();
 		universityInstance.setName(this.university.getText());
@@ -205,22 +214,46 @@ public class Settings extends Composite {
 		});
 	}
 	
-	void updateElement(SettingsForm toUpdate, List<SharedGetters> elements) {
-		toUpdate.clearList();
-		for (SharedGetters sharedGetters : elements) {
-			toUpdate
-					.addListItem(sharedGetters.getName(), sharedGetters.getId());
-		}
-	}
-	
 	@UiHandler("course")
 	void handleCourseClick(ClickEvent event) {
-		// TODO:
+		Course courseInstance = new Course();
+		courseInstance.setName(this.course.getText());
+		String selectedElement = this.university.getSelectedElement();
+		storeEntities.addCourse(selectedElement, courseInstance, new AsyncCallback<Void>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Course could not be stored.");
+				
+			}
+
+			@Override
+			public void onSuccess(Void result) {
+				reloadCourses();				
+			}
+		});
 	}
 	
 	private void reloadCourses() {
-		// TODO:
+		retrieveEntities.getCourses(university.getSelectedElement(), new AsyncCallback<List<Course>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+
+			@Override
+			public void onSuccess(List<Course> result) {
+				updateElement(course, new ArrayList<SharedGetters>(result));
+				
+			}
+		});
 	}
 	
-	
+	void updateElement(SettingsForm toUpdate, List<SharedGetters> elements) {
+		toUpdate.clearList();
+		for (SharedGetters sharedGetters : elements) {
+			toUpdate.addListItem(sharedGetters.getName(), sharedGetters.getId());
+		}
+	}
 }

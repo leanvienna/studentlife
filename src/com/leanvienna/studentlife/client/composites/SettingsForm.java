@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+// TODO: What is this class for?
 public class SettingsForm extends Composite {
 
 	TextBox countryTextBox = new TextBox();

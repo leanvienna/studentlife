@@ -37,6 +37,7 @@ public class StoreEntitiesServiceImpl extends AbstractEntitiesService implements
 	@Override
 	public void addCity(String provinceId, City city) {
 		initEntityManager();
+		// TODO: debug instead of sysout?
 		System.out.println("Adding City");
 		Province province = (Province) loadParent("Province", provinceId);
 		province.addCity(city);
