@@ -65,13 +65,18 @@ public class StoreEntitiesServiceImpl extends AbstractEntitiesService implements
 
 	@Override
 	public void addEvent(String courseId, Event event) {
-		// TODO Auto-generated method stub
-
+		initEntityManager();
+		Course course = (Course) loadParent("Course", courseId);
+		course.addEvent(event);
+		persist(course);
 	}
 
 	@Override
 	public void addTask(String courseId, Task task) {
-		
+		initEntityManager();
+		Course course = (Course) loadParent("Course", courseId);
+		course.addTask(task);
+		persist(course);
 	}
 	
 	private Object loadParent(String parentType, String id){

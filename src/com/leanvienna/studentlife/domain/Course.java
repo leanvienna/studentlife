@@ -42,6 +42,14 @@ public class Course implements Serializable, SharedGetters {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Message> messages = new java.util.HashSet<Message>();
 
+    public void addEvent(Event event) {
+    	events.add(event);
+    }
+    
+    public void addTask(Task task) {
+    	tasks.add(task);
+    }
+    
 	public void setName(String name) {
 		this.name = name;
 	}

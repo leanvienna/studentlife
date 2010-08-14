@@ -50,17 +50,22 @@ public class RetrieveEntitiesServiceImpl extends AbstractEntitiesService impleme
 	public List<Course> getCourses(String university) {
 		System.out.println("Loading Courses");
 		EntityManager entityManager = EMF.createEntityManager();
-		Query query = entityManager.createQuery("SELECT u FROM University u WHERE u.id = :id");
+		Query query = entityManager.createQuery("SELECT u.courses FROM University u WHERE u.id = :id");
 		query.setParameter("id", university);
 		@SuppressWarnings("unchecked")
-		List<Course> resultList = new ArrayList<Course>(query.getResultList());
+		List<Course> resultList = new ArrayList<Course>((Set<Course>)query.getSingleResult());
 		return resultList;
 	}
 
 	@Override
 	public List<Event> getEvents(String course) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Loading events for course " + course);
+		initEntityManager();
+		Query query = entityManager.createQuery("SELECT c.events FROM Course c WHERE c.id = :id");
+		query.setParameter("id", course);
+		@SuppressWarnings("unchecked")
+		List<Event> resultList = new ArrayList<Event>((Set<Event>)query.getSingleResult());
+		return resultList;
 	}
 
 	@Override
@@ -77,8 +82,13 @@ public class RetrieveEntitiesServiceImpl extends AbstractEntitiesService impleme
 
 	@Override
 	public List<Task> getTasks(String course) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Loading tasks for course " + course);
+		initEntityManager();
+		Query query = entityManager.createQuery("SELECT c.tasks FROM Course c WHERE c.id = :id");
+		query.setParameter("id", course);
+		@SuppressWarnings("unchecked")
+		List<Task> resultList = new ArrayList<Task>((Set<Task>)query.getSingleResult());
+		return resultList;
 	}
 
 	@Override
@@ -87,6 +97,7 @@ public class RetrieveEntitiesServiceImpl extends AbstractEntitiesService impleme
 		Query query = entityManager.createQuery("Select c.universities from City c where c.id = :id");
 		query.setParameter("id", city);
 		@SuppressWarnings("unchecked")
+		// TODO: WHY single result???
 		List<University> resultList = new ArrayList<University>((Set<University>)query.getSingleResult());
 		System.out.println("ResultList: " + resultList);
 		closeEntityManager();
